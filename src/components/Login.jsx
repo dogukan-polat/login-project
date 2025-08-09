@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 export default function Login() {
     const [form, setForm] = useState({
@@ -11,6 +12,7 @@ export default function Login() {
         password: false
     });
     const [isValid, setIsValid] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (validateEmail(form.email) && validatePassword(form.password) && form.terms) {
@@ -78,12 +80,16 @@ export default function Login() {
         }
     }
 
-    
+    function handleSubmit(event) {
+        event.preventDefault();
+        if (!isValid) return;
+        navigate("/success");
+    }
 
     return (
         <div className="flex flex-col items-center">
             <h1 className="m-16 text-6xl">Login</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label htmlFor="email">Email</label>
                 <input 
                 type="email" 
