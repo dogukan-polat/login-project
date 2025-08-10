@@ -98,8 +98,9 @@ export default function Login() {
                 name="email"
                 onChange={handleChange}
                 value={form.email}
+                data-cy="email"
                 className="bg-black m-4 p-4"/><br />
-                {error.email && <p className="text-red-900 font-black text-xl">Enter a valid email</p>}
+                {error.email && <p data-cy="error" className="text-red-900 font-black text-xl">Enter a valid email</p>}
 
                 <label htmlFor="password">Password</label>
                 <input type="password" 
@@ -108,19 +109,22 @@ export default function Login() {
                 name="password"
                 onChange={handleChange}
                 value={form.password}
+                data-cy="password"
                 className="bg-black m-4 p-4"/><br />
-                {error.password && <p className="text-red-900 font-black text-xl w-sm m-auto">Password should contain at least 8 characters, 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character</p>}
+                {error.password && <p data-cy="error" className="text-red-900 font-black text-xl w-sm m-auto">Password should contain at least 8 characters, 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character</p>}
 
                 <input 
                 type="checkbox" 
                 id="terms" 
                 name="terms"
                 onChange={handleChange}
+                data-cy="terms"
                 className="m-4 h-5 w-5"/>
                 <label htmlFor="terms">I agree to the terms and conditions</label><br />
 
                 <button 
                 type="submit" 
+                data-cy="submit"
                 disabled={!isValid} 
                 className={`text-2xl mt-10 p-10 
                 ${isValid ? "bg-green-900 cursor-pointer hover:border-blue-900 hover:border-2" : "bg-gray-900 cursor-not-allowed"}`}>Login</button>
